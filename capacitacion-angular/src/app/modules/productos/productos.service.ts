@@ -23,8 +23,7 @@ export class ProductosService {
   getProductos(): Observable<ApiResponseCustom> {
     return this._httpCliente.get<ApiResponseCustom>(`${env.backend}/productos/listProductos`).pipe(
       tap((res) => {
-        
-        //this._productos.next(res.data);
+        this._productos.next(res.data);
       }
       )
     )

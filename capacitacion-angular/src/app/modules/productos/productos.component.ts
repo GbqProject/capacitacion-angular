@@ -38,7 +38,7 @@ export class ProductosComponent implements OnInit{
   editProduct(element: Producto):void {
     this.idProducto = element.id_producto;
     this.nombreProducto.setValue(element.nombre_producto);
-    this.valorProducto.setValue(element.valor_unitario.slice(1));
+    this.valorProducto.setValue(parseFloat(element.valor_unitario.slice(1)));
     this.cantidadProducto.setValue(element.cantidad);
   }
 
@@ -59,7 +59,7 @@ export class ProductosComponent implements OnInit{
     }
     if(this.idProducto) {
       info.id = this.idProducto;
-      this._ProductosService.insertProducto(info).subscribe(res => {
+      this._ProductosService.updateProducto(info).subscribe(res => {
         this.getProductos();
       });
     } else {
